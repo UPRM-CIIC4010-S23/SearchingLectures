@@ -35,6 +35,26 @@ bool isEqual(std::vector<T> first, std::vector<T> second)
     return first == second;
 }
 
+string enumToString(Genres genres)
+{
+    switch (genres)
+    {
+    case ACTION:
+        return "ACTION";
+    case ADVENTURE:
+        return "ADVENTURE";
+    case COMEDY:
+        return "COMEDY";
+    case THRILLER:
+        return "THRILLER";
+    case WESTERN:
+        return "WESTERN";
+    case OTHER:
+        return "OTHER";
+    }
+    return "";
+}
+
 class IMBDPP{
 
 private:
@@ -94,25 +114,6 @@ public:
                this->getGenres() < rhs.getGenres();
     }
 
-    // Tester Methods (DO NOT REMOVE)
-    static string enumToString(Genres genres){
-        switch(genres){
-        case ACTION:
-            return "ACTION";
-        case ADVENTURE:
-            return "ADVENTURE";
-        case COMEDY:
-            return "COMEDY";
-        case THRILLER:
-            return "THRILLER";
-        case WESTERN:
-            return "WESTERN";
-        case OTHER:
-            return "OTHER";
-        }
-        return "";
-    }
-
     void printAttr(){
         cout.setf(ios::fixed, ios::floatfield);
         cout.precision(2);
@@ -131,15 +132,30 @@ public:
         cout << enumToString(genres);
         cout << endl;
     }
-    static void printFirst6Movies(vector<IMBDPP> v){
-        if(v.size() >= 1) v.at(0).printAttr();
-        if(v.size() >= 2) v.at(1).printAttr();
-        if(v.size() >= 3) v.at(2).printAttr();
-        if(v.size() >= 4) v.at(3).printAttr();
-        if(v.size() >= 5) v.at(4).printAttr();
-        if(v.size() >= 6) v.at(5).printAttr();
-    }
 
     // Methods Declared
 
 };
+
+int main(int argc, char const *argv[])
+{
+    IMBDPP m1("Movie1", "director1", 9.5, 43.98, 103.36, ACTION);
+    IMBDPP m2("Movie2", "director1", 8.1, 41.48, 256.36, ADVENTURE);
+    IMBDPP m3("Movie3", "director2", 5.2, 145.86, 45.36, ADVENTURE);
+    IMBDPP m4("Movie4", "director3", 7.5, 32.99, 65.7, THRILLER);
+    IMBDPP m5("Movie5", "director4", 8.3, 125.25, 163.3, WESTERN);
+    IMBDPP m6("Movie6", "director5", 3.5, 527.88, 527.88, COMEDY);
+    IMBDPP m7("Movie7", "director5", 6.5, 74.58, 574.58, COMEDY);
+    IMBDPP m8("Movie8", "director6", 9.3, 11.96, 811.96, WESTERN);
+    IMBDPP m9("Movie9", "director7", 4.5, 45.58, 5.73, OTHER);
+    IMBDPP m10("Movie10", "director1", 5.6, 61.84, 85.64, OTHER);
+
+    vector<IMBDPP> movieList1 = {m1, m2, m3, m4, m5, m6, m7, m8, m9, m10};
+    vector<IMBDPP> movieList2 = {m1, m4, m5, m6, m7, m10};
+    vector<IMBDPP> movieList3 = {m3, m4, m8, m9, m10};
+    vector<IMBDPP> movieList4 = {m1, m2, m3, m4, m7, m7, m9};
+    vector<IMBDPP> movieList5 = {m1, m9, m10};
+    vector<IMBDPP> emptyList = {};
+
+    exit(0);
+}
